@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="row text-center background">
+    <div class="col-md-12 ">
+
+      <h2 class="text-monospace borderfont-weight-bolder mt-3 p-3">
+        <mdb-icon fas icon="utensils"></mdb-icon> Kitchen Inventory
+      </h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <mdb-card cascade="true" narrower="true">
+        <!--Card image-->
+        <div
+          class="view view-cascade gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 mt-3 d-flex justify-content-between align-items-center">
+
+          <div>
+
+          </div>
+
+          <a href="" class="white-text mx-3">Kitchen Order Display</a>
+
+          <div>
+
+          </div>
+
+        </div>
+        <!--/Card image-->
+
+        <div class="px-4">
+            <div *ngIf="!foodItems" class="text-center">
+                <div class="spinner-border" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </div>
+          <div *ngIf="foodItems" class="table-wrapper">
+            <!--Table-->
+            <table id="kitchenData" class="table  table-responsive-md btn-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Quantity</th>
+                  <th>Created Till Now</th>
+                  <th>Predicted</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                
+                <tr *ngFor="let item of foodItems">
+                  <th scope="row">{{item.foodName}}</th>
+                  <td>{{item.quantity}}</td>
+                  <td>{{item.createTillNow}}</td>
+                  <td>{{item.predicted}}</td>
+                  <td>
+                    <button mdbBtn color="indigo" size="sm" mdbWavesEffect type="button" class="m-0"
+                      [disabled]="loading" (click)="updateQuantity(item)">Done</button>
+                    <!-- 
+                      <button mdbBtn color="primary" type="button" [disabled]="loading" (click)="updateQuantity(item)">
+                          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                          Done.
+                        </button> -->
+                    <!-- <button mdbBtn color="primary" type="button" disabled>
+                            <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                            <span class="sr-only">Loading...</span>
+                          </button> -->
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <!--Table-->
+          </div>
+        </div>
+        <button mdbBtn type="button"
+          mdbTooltip="Make sure to allow multiple download in chrome (if getting issues in downloading report)"
+          color="deep-purple" (click)="export()" mdbWavesEffect>Export As Pdf</button>
+      </mdb-card>
+    </div>
+  </div>
+
+</div>
