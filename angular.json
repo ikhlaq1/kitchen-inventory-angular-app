@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "kitchen-inventory": {
+    "mdb-angular-free": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -34,6 +34,7 @@
               "node_modules/@fortawesome/fontawesome-free/scss/brands.scss",
               "node_modules/angular-bootstrap-md/assets/scss/bootstrap/bootstrap.scss",
               "node_modules/angular-bootstrap-md/assets/scss/mdb.scss",
+              "node_modules/ngx-toastr/toastr.css",
               "src/styles.scss"
             ],
             "scripts": [
@@ -102,7 +103,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []
           }

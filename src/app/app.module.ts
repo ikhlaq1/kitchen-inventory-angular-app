@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 
@@ -18,6 +19,7 @@ import { ExportAsModule } from 'ngx-export-as';
     BrowserAnimationsModule,
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
+    ToastrModule.forRoot(),
     FormsModule,
     ExportAsModule
   ],

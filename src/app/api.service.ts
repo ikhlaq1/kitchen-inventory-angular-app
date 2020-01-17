@@ -19,4 +19,10 @@ export class ApiService {
         `${this.API_URL}/food/${id}`,value,
       );
   }
+
+  deleteFoodItem(id){
+    return this.http.delete(
+      `${this.API_URL}/food/${id}`,
+    );
+}
 }

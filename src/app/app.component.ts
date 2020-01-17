@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from './api.service';
 import { ExportAsService, ExportAsConfig } from 'ngx-export-as';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,17 +10,17 @@ import { ExportAsService, ExportAsConfig } from 'ngx-export-as';
 })
 export class AppComponent implements OnInit {
   foodItems: any;
-  loading: boolean ;
+  loading: boolean;
   exportAsConfig: ExportAsConfig = {
     type: 'pdf', // the type you want to download
     elementId: 'kitchenData', // the id of html/table element
   }
-  constructor(public apiService: ApiService,private exportAsService: ExportAsService) { }
+  constructor(public apiService: ApiService, private exportAsService: ExportAsService, private toastr: ToastrService) { }
   ngOnInit() {
     this.getFoodItems();
   }
 
-  getFoodItems(){
+  getFoodItems() {
     this.apiService.getFoodItems().subscribe(res => {
       console.log({ res });
       this.foodItems = res['foods'];
@@ -28,7 +30,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  updateQuantity(data){
+  updateQuantity(data) {
     this.loading = true;
     console.log(data);
     const updatedFoodItem = { ...data, createTillNow: parseInt(data.createTillNow, 10) + (1 * data.quantity) };
@@ -39,8 +41,17 @@ export class AppComponent implements OnInit {
       console.log(err);
     });
   }
+  delete(data) {
+    this.apiService.deleteFoodItem(data._id).subscribe(res => {
+      console.log(res);
+      this.getFoodItems();
+      this.toastr.error('Item Deleted Successfully');
+    }, (err) => {
+      console.log(err);
+    });
+  }
 
-   export() {
+  export() {
     this.exportAsService.get(this.exportAsConfig).subscribe(content => {
       const link = document.createElement('a');
       const fileName = 'kitchenReport.pdf';
