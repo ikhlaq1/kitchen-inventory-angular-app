@@ -10,7 +10,6 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AppComponent implements OnInit {
   public broadChannel = new BroadcastChannel('test_channel');
-
   foodItems: any;
   loading: boolean;
   // config for export type
@@ -65,6 +64,7 @@ export class AppComponent implements OnInit {
     }); 
   }
 
+  //download pdf copy of report
   export() {
     this.exportAsService.get(this.exportAsConfig).subscribe(content => {
       const link = document.createElement('a');
