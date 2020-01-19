@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef} from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ApiService } from './api.service';
 import { ExportAsService, ExportAsConfig } from 'ngx-export-as';
 import { ToastrService } from 'ngx-toastr';
@@ -13,9 +13,10 @@ export class AppComponent implements OnInit {
 
   foodItems: any;
   loading: boolean;
+  // config for export type
   exportAsConfig: ExportAsConfig = {
-    type: 'pdf', // the type you want to download
-    elementId: 'kitchenData', // the id of html/table element
+    type: 'pdf',
+    elementId: 'kitchenData',
   }
   constructor(
     public apiService: ApiService,
@@ -24,12 +25,15 @@ export class AppComponent implements OnInit {
     private toastr: ToastrService) { }
   ngOnInit() {
     this.getFoodItems();
+    // boradcast message for cross tab communication
     this.broadChannel.onmessage = (ev) => {
       this.foodItems = ev.data;
+      // detect changes and reflect them in markup using changeDetector
       this.changeDetect.detectChanges();
-      };
+    };
   }
 
+  // get all food items by calling API endpoint
   getFoodItems() {
     this.apiService.getFoodItems().subscribe(res => {
       this.foodItems = res['foods'];
@@ -41,6 +45,7 @@ export class AppComponent implements OnInit {
     });
   }
 
+  // update createdTillNow food item by calling API endpoint
   updateQuantity(data) {
     this.loading = true;
     const updatedFoodItem = { ...data, createTillNow: parseInt(data.createTillNow, 10) + (1 * data.quantity) };
@@ -50,14 +55,14 @@ export class AppComponent implements OnInit {
       console.log(err);
     });
   }
-  
+  // delete food item by calling API endpoint
   delete(data) {
     this.apiService.deleteFoodItem(data._id).subscribe(res => {
       this.getFoodItems();
       this.toastr.error('Item Deleted Successfully');
     }, (err) => {
       console.log(err);
-    });
+    }); 
   }
 
   export() {
