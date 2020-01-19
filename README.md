@@ -1,12 +1,10 @@
-[![RealWorld Frontend](https://img.shields.io/badge/realworld-frontend-%23783578.svg)](http://realworld.io)
-[![Build Status](https://travis-ci.org/gothinkster/angular-realworld-example-app.svg?branch=master)](https://travis-ci.org/gothinkster/angular-realworld-example-app)
+
 
 # ![Kitchen Inventory]
 > ### Kitchen Inventory (CRUD,advanced patterns) 
 
 
-<a href="https://stackblitz.com/edit/angular-realworld" target="_blank"><img width="187" src="./kitchen-inventory" /></a>&nbsp;&nbsp;
-
+![](kitchen-inventory.png)
 ### [Demo](https://compassionate-galileo-47ae33.netlify.com)&nbsp;&nbsp;&nbsp;&nbsp;
 
 
