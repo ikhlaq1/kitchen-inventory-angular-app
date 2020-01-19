@@ -5,7 +5,7 @@
 > ### Kitchen Inventory (CRUD,advanced patterns) 
 
 
-<a href="https://stackblitz.com/edit/angular-realworld" target="_blank"><img width="187" src="https://github.com/ikhlaq1/kitchen-inventory-angular-app/edit_on_blitz.png?raw=true" /></a>&nbsp;&nbsp;
+<a href="https://stackblitz.com/edit/angular-realworld" target="_blank"><img width="187" src="./kitchen-inventory" /></a>&nbsp;&nbsp;
 
 ### [Demo](https://compassionate-galileo-47ae33.netlify.com)&nbsp;&nbsp;&nbsp;&nbsp;
 
